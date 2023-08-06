@@ -1,6 +1,7 @@
 package com.dalmofelipe.springtemplate.endpoinsts;
 
 import com.dalmofelipe.springtemplate.dtos.UserDto;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,8 +26,8 @@ public class UserEndpoints {
     }
 
     @PostMapping
-    public String saveUser(@RequestBody UserDto userDto) {
-        return "salva usuário(a) " + userDto + " no banco de dados";
+    public ResponseEntity<String> saveUser(@RequestBody UserDto userDto) {
+        return ResponseEntity.ok().body("salva usuário(a) " + userDto + " no banco de dados");
     }
 
     @PutMapping("/{userId}")
@@ -34,23 +35,35 @@ public class UserEndpoints {
         return "atualiza dados do(a) usuário(a) com ID = " + userId;
     }
 
+    @DeleteMapping("/{userId}")
+    public String deleteUser(@PathVariable UUID userId) {
+        return "deleta o usuário com ID " + userId;
+    }
+
     @GetMapping("/filter")
     public String filterUsers(
-        @RequestParam(required = false) String role,
-        @RequestParam(required = false) List<String> states
-    ) {
-        StringBuilder ulHtml = null;
+            @RequestParam(required = false) String role, @RequestParam(required = false) List<String> states,
+            @RequestParam(required = false) List<Integer> numbers) {
+
+        StringBuilder ulHtml = new StringBuilder();
 
         if(states != null) {
-            ulHtml = new StringBuilder("<ul>");
+            ulHtml.append("<h1>Estados da União</h1><ul>");
             for(var state:states) {
                 ulHtml.append("<li>").append(state).append("</li>");
+            }
+            ulHtml.append("</ul><br><br>");
+        }
+
+        if(numbers != null) {
+            ulHtml.append("<h1>Valores</h1><ul>");
+            for(var n:numbers) {
+                ulHtml.append("<li>").append(n*2).append("</li>");
             }
             ulHtml.append("</ul>");
         }
 
-        return "retornando busca com filtros de funções " + role
-            + " nos estados  " + ulHtml;
+        return "Olá " + role + "! " + ulHtml;
     }
 
 }
