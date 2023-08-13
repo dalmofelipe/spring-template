@@ -1,6 +1,10 @@
-package com.dalmofelipe.springtemplate.endpoinsts;
+package com.dalmofelipe.springtemplate.endpoints;
 
 import com.dalmofelipe.springtemplate.dtos.UserDto;
+import com.dalmofelipe.springtemplate.entities.UserModel;
+import com.dalmofelipe.springtemplate.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,33 +15,38 @@ import java.util.UUID;
 @RequestMapping(value = "/users")
 public class UserEndpoints {
 
+    @Autowired
+    private UserService userService;
+
     // @PathVariable = req.param
     // @RequestBody  = req.body
     // @RequestParam = req.query
 
     @GetMapping
-    public String listUsers() {
-        return "retornar uma lista de usuários(as)";
+    public ResponseEntity<List<UserDto>> listUsers() {
+        return ResponseEntity.ok().body(userService.listAll());
     }
 
     @GetMapping("/{userId}")
-    public String showUser(@PathVariable UUID userId) {
-        return "exibe usuário(a) com ID = " + userId;
+    public ResponseEntity<UserDto> showUser(@PathVariable UUID userId) {
+        return ResponseEntity.ok().body(userService.showUser(userId));
     }
 
     @PostMapping
-    public ResponseEntity<String> saveUser(@RequestBody UserDto userDto) {
-        return ResponseEntity.ok().body("salva usuário(a) " + userDto + " no banco de dados");
+    public ResponseEntity<UserModel> saveUser(@RequestBody UserDto userDto) {
+        return ResponseEntity.status(201).body(userService.save(userDto));
     }
 
     @PutMapping("/{userId}")
-    public String updateUser(@RequestBody UserDto userDto, @PathVariable UUID userId) {
-        return "atualiza dados do(a) usuário(a) com ID = " + userId;
+    public ResponseEntity<UserModel> updateUser(@RequestBody UserDto userDto,
+            @PathVariable UUID userId) {
+        return ResponseEntity.ok().body(userService.update(userId, userDto));
     }
 
     @DeleteMapping("/{userId}")
-    public String deleteUser(@PathVariable UUID userId) {
-        return "deleta o usuário com ID " + userId;
+    public ResponseEntity<Void> deleteUser(@PathVariable UUID userId) {
+        userService.remove(userId);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     @GetMapping("/filter")
