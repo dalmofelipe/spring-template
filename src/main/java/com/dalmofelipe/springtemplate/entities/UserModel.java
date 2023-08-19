@@ -1,6 +1,7 @@
 package com.dalmofelipe.springtemplate.entities;
 
 import com.dalmofelipe.springtemplate.dtos.UserDto;
+import com.dalmofelipe.springtemplate.enums.UserRole;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

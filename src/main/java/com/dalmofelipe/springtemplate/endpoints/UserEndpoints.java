@@ -1,7 +1,7 @@
 package com.dalmofelipe.springtemplate.endpoints;
 
 import com.dalmofelipe.springtemplate.dtos.UserDto;
-import com.dalmofelipe.springtemplate.entities.UserModel;
+import com.dalmofelipe.springtemplate.responses.ResponseHandler;
 import com.dalmofelipe.springtemplate.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,8 +23,8 @@ public class UserEndpoints {
     // @RequestParam = req.query
 
     @GetMapping
-    public ResponseEntity<List<UserDto>> listUsers() {
-        return ResponseEntity.ok().body(userService.listAll());
+    public ResponseEntity<Object> listUsers() {
+        return ResponseHandler.generateResponse("read all", HttpStatus.OK, userService.listAll());
     }
 
     @GetMapping("/{userId}")
@@ -33,25 +33,29 @@ public class UserEndpoints {
     }
 
     @PostMapping
-    public ResponseEntity<UserModel> saveUser(@RequestBody UserDto userDto) {
-        return ResponseEntity.status(201).body(userService.save(userDto));
+    public ResponseEntity<Object> saveUser(@RequestBody UserDto userDto) {
+        return ResponseHandler.generateResponse("create",HttpStatus.OK, userService.save(userDto));
     }
 
     @PutMapping("/{userId}")
-    public ResponseEntity<UserModel> updateUser(@RequestBody UserDto userDto,
-            @PathVariable UUID userId) {
-        return ResponseEntity.ok().body(userService.update(userId, userDto));
+    public ResponseEntity<Object> updateUser(@RequestBody UserDto userDto, @PathVariable UUID userId) {
+        return ResponseHandler.generateResponse("update", HttpStatus.OK, userService.update(userId, userDto));
     }
 
     @DeleteMapping("/{userId}")
-    public ResponseEntity<Void> deleteUser(@PathVariable UUID userId) {
-        userService.remove(userId);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    public ResponseEntity<Object> deleteUser(@PathVariable UUID userId) {
+        try {
+            userService.remove(userId);
+            return ResponseHandler.generateResponse("delete", HttpStatus.NO_CONTENT, null);
+        } catch(Exception e) {
+            return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.BAD_REQUEST, null);
+        }
     }
 
     @GetMapping("/filter")
     public String filterUsers(
-            @RequestParam(required = false) String role, @RequestParam(required = false) List<String> states,
+            @RequestParam(required = false) String role,
+            @RequestParam(required = false) List<String> states,
             @RequestParam(required = false) List<Integer> numbers) {
 
         StringBuilder ulHtml = new StringBuilder();
