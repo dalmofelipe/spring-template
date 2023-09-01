@@ -1,14 +1,16 @@
 package com.dalmofelipe.springtemplate.repositories;
 
-import com.dalmofelipe.springtemplate.dtos.UserDto;
-import com.dalmofelipe.springtemplate.entities.UserModel;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import com.dalmofelipe.springtemplate.dtos.UserDto;
+import com.dalmofelipe.springtemplate.entities.UserModel;
+
 
 @Repository
 public interface UserRepository extends JpaRepository<UserModel, UUID> {

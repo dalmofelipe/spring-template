@@ -1,17 +1,16 @@
 package com.dalmofelipe.springtemplate.services;
 
-import ch.qos.logback.core.joran.util.beans.BeanUtil;
-import com.dalmofelipe.springtemplate.dtos.UserDto;
-import com.dalmofelipe.springtemplate.entities.UserModel;
-import com.dalmofelipe.springtemplate.repositories.UserRepository;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.dalmofelipe.springtemplate.dtos.UserDto;
+import com.dalmofelipe.springtemplate.entities.UserModel;
+import com.dalmofelipe.springtemplate.repositories.UserRepository;
+
 
 @Service
 public class UserService {
@@ -50,9 +49,11 @@ public class UserService {
         Optional<UserModel> opt = userRepository.findById(userId);
         if(opt.isEmpty())
             return null; // TODO implementar exception
+
         var user = opt.get();
-        user.setName(userDto.getName());
-        user.setEmail(userDto.getEmail());
+        user.setName(userDto.getName() != null ? userDto.getName() : user.getName());
+        user.setEmail(userDto.getEmail() != null ? userDto.getEmail() : user.getEmail());
+        
         return userRepository.save(user);
     }
 }
