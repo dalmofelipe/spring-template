@@ -1,5 +1,7 @@
 package com.dalmofelipe.springtemplate.dtos;
 
+import java.util.UUID;
+
 import org.springframework.beans.BeanUtils;
 
 import com.dalmofelipe.springtemplate.entities.UserModel;
@@ -13,20 +15,12 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDto {
+public class UserOutputDto {
 
+    private UUID id;
     private String name;
     private String email;
-    private String password;
     private UserRole role;
-
-
-    // para uso no repositoty - findAllUsers
-    public UserDto(String name, String email, UserRole role) {
-        this.name = name;
-        this.email = email;
-        this.role = role;
-    }
 
     public UserModel toModel() {
         UserModel model = new UserModel();

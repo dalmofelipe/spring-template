@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dalmofelipe.springtemplate.dtos.UserDto;
+import com.dalmofelipe.springtemplate.dtos.UserOutputDto;
 import com.dalmofelipe.springtemplate.entities.UserModel;
 import com.dalmofelipe.springtemplate.repositories.UserRepository;
 
@@ -18,7 +19,7 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public List<UserDto> listAll() {
+    public List<UserOutputDto> listAll() {
         return userRepository.findAllUsers();
     }
 
@@ -31,6 +32,7 @@ public class UserService {
         user.setName(userDto.getName());
         user.setEmail(userDto.getEmail());
         user.setPassword(userDto.getPassword());
+        user.setRole(userDto.getRole());
 
         return userRepository.save(user);
     }
@@ -53,6 +55,7 @@ public class UserService {
         var user = opt.get();
         user.setName(userDto.getName() != null ? userDto.getName() : user.getName());
         user.setEmail(userDto.getEmail() != null ? userDto.getEmail() : user.getEmail());
+        user.setRole(userDto.getRole() != null ? userDto.getRole() : user.getRole());
         
         return userRepository.save(user);
     }

@@ -1,16 +1,17 @@
 package com.dalmofelipe.springtemplate.enums;
 
-import lombok.Getter;
-
-@Getter
 public enum UserRole {
 
     JUNIOR("JUNIOR"), PLENO("PLENO"), SENIOR("SENIOR"), JEDI("JEDI");
 
-    private final String role;
+    private String role;
 
     UserRole(String role) {
         this.role = role;
+    }
+
+    public String getRole() {
+        return this.role;
     }
 
 }

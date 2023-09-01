@@ -65,21 +65,21 @@ public class UserEndpoints {
     @GetMapping("/filter")
     public String filterUsers(
             @RequestParam(required = false) String role,
-            @RequestParam(required = false) List<String> states,
-            @RequestParam(required = false) List<Integer> numbers) {
+            @RequestParam(required = false) List<String> words,
+            @RequestParam(required = false) List<Double> numbers) {
 
         StringBuilder ulHtml = new StringBuilder();
 
-        if(states != null) {
-            ulHtml.append("<h1>Estados da União</h1><ul>");
-            for(var state:states) {
-                ulHtml.append("<li>").append(state).append("</li>");
+        if(words != null) {
+            ulHtml.append("<h1>Palavras</h1><ul>");
+            for(String word : words) {
+                ulHtml.append("<li>").append(word).append("</li>");
             }
             ulHtml.append("</ul><br><br>");
         }
 
         if(numbers != null) {
-            ulHtml.append("<h1>Valores</h1><ul>");
+            ulHtml.append("<h1>Numeros em Dobro</h1><ul>");
             for(var n:numbers) {
                 ulHtml.append("<li>").append(n*2).append("</li>");
             }
