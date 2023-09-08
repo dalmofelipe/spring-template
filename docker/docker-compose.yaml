@@ -1,24 +1,9 @@
 version: '3'
 
 services:
-  postgres:
-    image: postgres:latest
-    container_name: postgres-db
-    environment:
-      POSTGRES_DB: spring
-      POSTGRES_USER: myuser
-      POSTGRES_PASSWORD: 123123
-      PGDATA: /var/lib/postgresql/data/pgdata
-    ports:
-      - "5432:5432"
-    volumes:
-      - ~/dev/pgdata-spring:/var/lib/postgresql/data/pgdata
-    networks:
-      - database-network
-
-  mariadb:
-    image: mariadb:latest
-    container_name: mariadb-db
+  mysql:
+    image: mysql:latest
+    container_name: mysql-db
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: spring
@@ -27,7 +12,8 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - ~/dev/mdbdata-spring:/var/lib/mysql
+      - ./mysqlconf.cnf:/etc/mysql/conf.d/custom.cnf
+      - ~/dev/mysqldata-spring:/var/lib/mysql
     networks:
       - database-network
 

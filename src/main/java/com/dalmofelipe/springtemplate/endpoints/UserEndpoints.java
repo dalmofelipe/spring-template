@@ -44,7 +44,7 @@ public class UserEndpoints {
 
     @PostMapping
     public ResponseEntity<Object> saveUser(@RequestBody UserDto userDto) {
-        return ResponseHandler.generateResponse("create",HttpStatus.OK, userService.save(userDto));
+        return ResponseHandler.generateResponse("create", HttpStatus.OK, userService.save(userDto));
     }
 
     @PutMapping("/{userId}")
