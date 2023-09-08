@@ -1,0 +1,21 @@
+{
+  "properties": [
+    {
+      "name": "app.repo",
+      "type": "java.lang.String",
+      "description": "A description for 'app.repo'"
+    },{
+      "name": "app.author",
+      "type": "java.lang.String",
+      "description": "A description for 'app.author'"
+    },{
+      "name": "app.release",
+      "type": "java.lang.String",
+      "description": "A description for 'app.release'"
+    },{
+      "name": "app.env",
+      "type": "java.lang.String",
+      "description": "A description for 'app.env'"
+    }
+  ]
+}
