@@ -16,20 +16,25 @@ services:
     networks:
       - database-network
 
-  mariadb:
-    image: mariadb:latest
-    container_name: mariadb-db
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: spring
-      MYSQL_USER: myuser
-      MYSQL_PASSWORD: 123123
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin-db
     ports:
-      - "3306:3306"
+      - "5080:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: spring.template@example.com
+      PGADMIN_DEFAULT_PASSWORD: 123123
     volumes:
-      - ~/dev/mdbdata-spring:/var/lib/mysql
+      # chown -R 5050:5050 ~/dev/pgadmin-data-spring
+      - ~/dev/pgadmin-data-spring:/var/lib/pgadmin
     networks:
       - database-network
+    depends_on:
+      - postgres
 
 networks:
   database-network:
+
+volumes:
+  pgdata-spring:
+  pgadmin-data-spring:
