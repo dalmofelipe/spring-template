@@ -12,3 +12,5 @@
 - [ ] Documentação com Swagger
 - [ ] Requisições Externas - Webclient - FeingClient - RestTemplate - JsonNode
 - [ ] Testes - Mochito + JUnit
+- [ ] MongoDB
+- [ ] GraphQL
