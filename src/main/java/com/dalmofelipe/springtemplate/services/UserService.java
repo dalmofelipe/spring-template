@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 import com.dalmofelipe.springtemplate.dtos.UserDTO;
 import com.dalmofelipe.springtemplate.dtos.UserOutputDTO;
 import com.dalmofelipe.springtemplate.entities.UserModel;
+import com.dalmofelipe.springtemplate.exceptions.business.EmailAlreadyInUseException;
 import com.dalmofelipe.springtemplate.repositories.UserRepository;
-
 
 @Service
 public class UserService {
@@ -26,7 +26,7 @@ public class UserService {
     public UserModel save(UserDTO userDto) {
         Optional<UserModel> opt = userRepository.findByEmail(userDto.getEmail());
         if (opt.isPresent())
-            return null; // TODO implementar exception
+            throw new EmailAlreadyInUseException();
 
         var user = new UserModel();
         user.setName(userDto.getName());
