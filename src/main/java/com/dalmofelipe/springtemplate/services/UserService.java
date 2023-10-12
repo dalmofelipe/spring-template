@@ -7,8 +7,8 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.dalmofelipe.springtemplate.dtos.UserDto;
-import com.dalmofelipe.springtemplate.dtos.UserOutputDto;
+import com.dalmofelipe.springtemplate.dtos.UserDTO;
+import com.dalmofelipe.springtemplate.dtos.UserOutputDTO;
 import com.dalmofelipe.springtemplate.entities.UserModel;
 import com.dalmofelipe.springtemplate.repositories.UserRepository;
 
@@ -19,11 +19,11 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public List<UserOutputDto> listAll() {
+    public List<UserOutputDTO> listAll() {
         return userRepository.findAllUsers();
     }
 
-    public UserModel save(UserDto userDto) {
+    public UserModel save(UserDTO userDto) {
         Optional<UserModel> opt = userRepository.findByEmail(userDto.getEmail());
         if (opt.isPresent())
             return null; // TODO implementar exception
@@ -37,7 +37,7 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public UserDto showUser(UUID userId) {
+    public UserDTO showUser(UUID userId) {
         Optional<UserModel> opt = userRepository.findById(userId);
         // TOOD implementar exception
         return opt.map(UserModel::toDto).orElse(null);
@@ -47,7 +47,7 @@ public class UserService {
         userRepository.deleteById(userId);
     }
 
-    public UserModel update(UUID userId, UserDto userDto) {
+    public UserModel update(UUID userId, UserDTO userDto) {
         Optional<UserModel> opt = userRepository.findById(userId);
         if(opt.isEmpty())
             return null; // TODO implementar exception

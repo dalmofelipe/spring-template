@@ -13,16 +13,15 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDto {
+public class UserDTO {
 
     private String name;
     private String email;
     private String password;
     private UserRole role;
 
-
     // para uso no repositoty - findAllUsers
-    public UserDto(String name, String email, UserRole role) {
+    public UserDTO(String name, String email, UserRole role) {
         this.name = name;
         this.email = email;
         this.role = role;

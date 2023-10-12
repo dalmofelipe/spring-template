@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserOutputDto {
+public class UserOutputDTO {
 
     private UUID id;
     private String name;

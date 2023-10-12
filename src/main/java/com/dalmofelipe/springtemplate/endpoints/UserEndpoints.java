@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dalmofelipe.springtemplate.dtos.UserDto;
+import com.dalmofelipe.springtemplate.dtos.UserDTO;
 import com.dalmofelipe.springtemplate.responses.ResponseHandler;
 import com.dalmofelipe.springtemplate.services.UserService;
 
@@ -38,18 +38,18 @@ public class UserEndpoints {
     }
 
     @GetMapping("/{userId}")
-    public ResponseEntity<UserDto> showUser(@PathVariable UUID userId) {
+    public ResponseEntity<UserDTO> showUser(@PathVariable UUID userId) {
         return ResponseEntity.ok().body(userService.showUser(userId));
     }
 
     @PostMapping
-    public ResponseEntity<Object> saveUser(@RequestBody UserDto userDto) {
-        return ResponseHandler.generateResponse("create",HttpStatus.OK, userService.save(userDto));
+    public ResponseEntity<Object> saveUser(@RequestBody UserDTO userDTO) {
+        return ResponseHandler.generateResponse("create",HttpStatus.OK, userService.save(userDTO));
     }
 
     @PutMapping("/{userId}")
-    public ResponseEntity<Object> updateUser(@RequestBody UserDto userDto, @PathVariable UUID userId) {
-        return ResponseHandler.generateResponse("update", HttpStatus.OK, userService.update(userId, userDto));
+    public ResponseEntity<Object> updateUser(@RequestBody UserDTO userDTO, @PathVariable UUID userId) {
+        return ResponseHandler.generateResponse("update", HttpStatus.OK, userService.update(userId, userDTO));
     }
 
     @DeleteMapping("/{userId}")
@@ -88,5 +88,4 @@ public class UserEndpoints {
 
         return "Olá " + role + "! " + ulHtml;
     }
-
 }

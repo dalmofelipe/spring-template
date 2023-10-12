@@ -1,6 +1,6 @@
 package com.dalmofelipe.springtemplate.entities;
 
-import com.dalmofelipe.springtemplate.dtos.UserDto;
+import com.dalmofelipe.springtemplate.dtos.UserDTO;
 import com.dalmofelipe.springtemplate.enums.UserRole;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -46,8 +46,8 @@ public class UserModel {
         this.createdAt = LocalDateTime.now();
     }
 
-    public UserDto toDto() {
-        UserDto dto = new UserDto();
+    public UserDTO toDto() {
+        UserDTO dto = new UserDTO();
         BeanUtils.copyProperties(this, dto);
         return dto;
     }
