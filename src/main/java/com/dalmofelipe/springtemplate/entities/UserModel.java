@@ -1,16 +1,28 @@
 package com.dalmofelipe.springtemplate.entities;
 
-import com.dalmofelipe.springtemplate.dtos.UserDTO;
-import com.dalmofelipe.springtemplate.enums.UserRole;
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import java.time.LocalDateTime;
+import java.util.UUID;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.time.LocalDateTime;
-import java.util.UUID;
+import com.dalmofelipe.springtemplate.dtos.UserCreateDTO;
+import com.dalmofelipe.springtemplate.enums.UserRole;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 @Entity
@@ -37,6 +49,7 @@ public class UserModel {
     @Column(nullable = true)
     private UserRole role;
 
+    @JsonProperty("created_at")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Column(name = "created_at", nullable = true)
     @Temporal(TemporalType.TIMESTAMP)
@@ -46,8 +59,8 @@ public class UserModel {
         this.createdAt = LocalDateTime.now();
     }
 
-    public UserDTO toDto() {
-        UserDTO dto = new UserDTO();
+    public UserCreateDTO toDTO() {
+        UserCreateDTO dto = new UserCreateDTO();
         BeanUtils.copyProperties(this, dto);
         return dto;
     }

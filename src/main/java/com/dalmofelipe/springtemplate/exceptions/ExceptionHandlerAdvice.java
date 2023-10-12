@@ -22,6 +22,7 @@ import com.dalmofelipe.springtemplate.exceptions.dtos.ErrorDTO;
 
 import ch.qos.logback.classic.LoggerContext;
 
+
 @ControllerAdvice
 public class ExceptionHandlerAdvice {
 
