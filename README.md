@@ -8,9 +8,10 @@
 - [x] schema.sql - data.sql - Flyway Migrations
 - [x] .env / sh - env settings
 - [x] docker-compose para bases de dados
-- [ ] Tratamento de erros, validações e localização
+- [x] Tratamento de erros e validações
 - [ ] Documentação com Swagger
 - [ ] Requisições Externas - Webclient - FeingClient - RestTemplate - JsonNode
 - [ ] Testes - Mochito + JUnit
+- [ ] Localização e Internacionalização
 - [ ] MongoDB
 - [ ] GraphQL
