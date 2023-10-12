@@ -15,7 +15,7 @@ import com.dalmofelipe.springtemplate.entities.UserModel;
 @Repository
 public interface UserRepository extends JpaRepository<UserModel, UUID> {
 
-    // Mapeado consulta direto no DTO
+    // Mapeando consulta direto no DTO
     @Query("SELECT new com.dalmofelipe.springtemplate.dtos.UserOutputDTO(u.id, u.name, u.email, u.role) FROM UserModel u")
     List<UserOutputDTO> findAllUsers();
 

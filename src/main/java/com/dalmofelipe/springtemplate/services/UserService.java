@@ -11,6 +11,7 @@ import com.dalmofelipe.springtemplate.dtos.UserDTO;
 import com.dalmofelipe.springtemplate.dtos.UserOutputDTO;
 import com.dalmofelipe.springtemplate.entities.UserModel;
 import com.dalmofelipe.springtemplate.exceptions.business.EmailAlreadyInUseException;
+import com.dalmofelipe.springtemplate.exceptions.business.UserNotFoundException;
 import com.dalmofelipe.springtemplate.repositories.UserRepository;
 
 @Service
@@ -39,8 +40,8 @@ public class UserService {
 
     public UserDTO showUser(UUID userId) {
         Optional<UserModel> opt = userRepository.findById(userId);
-        // TOOD implementar exception
-        return opt.map(UserModel::toDto).orElse(null);
+        
+        return opt.map(UserModel::toDto).orElseThrow(() -> new UserNotFoundException());
     }
 
     public void remove(UUID userId) {
@@ -50,7 +51,7 @@ public class UserService {
     public UserModel update(UUID userId, UserDTO userDto) {
         Optional<UserModel> opt = userRepository.findById(userId);
         if(opt.isEmpty())
-            return null; // TODO implementar exception
+            throw new UserNotFoundException();
 
         var user = opt.get();
         user.setName(userDto.getName() != null ? userDto.getName() : user.getName());

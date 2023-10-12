@@ -20,6 +20,8 @@ import com.dalmofelipe.springtemplate.dtos.UserDTO;
 import com.dalmofelipe.springtemplate.responses.ResponseHandler;
 import com.dalmofelipe.springtemplate.services.UserService;
 
+import jakarta.validation.Valid;
+
 
 @RestController
 @RequestMapping(value = "/users")
@@ -43,7 +45,7 @@ public class UserEndpoints {
     }
 
     @PostMapping
-    public ResponseEntity<Object> saveUser(@RequestBody UserDTO userDTO) {
+    public ResponseEntity<Object> saveUser(@Valid @RequestBody UserDTO userDTO) {
         return ResponseHandler.generateResponse("create",HttpStatus.OK, userService.save(userDTO));
     }
 
