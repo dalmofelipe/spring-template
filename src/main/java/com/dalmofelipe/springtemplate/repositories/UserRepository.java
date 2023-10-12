@@ -8,16 +8,16 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.dalmofelipe.springtemplate.dtos.UserOutputDto;
+import com.dalmofelipe.springtemplate.dtos.UserOutputDTO;
 import com.dalmofelipe.springtemplate.entities.UserModel;
 
 
 @Repository
 public interface UserRepository extends JpaRepository<UserModel, UUID> {
 
-    // Mapeado consulta direto no DTO
-    @Query("SELECT new com.dalmofelipe.springtemplate.dtos.UserOutputDto(u.id, u.name, u.email, u.role) FROM UserModel u")
-    List<UserOutputDto> findAllUsers();
+    // Mapeando consulta direto no DTO
+    @Query("SELECT new com.dalmofelipe.springtemplate.dtos.UserOutputDTO(u.id, u.name, u.email, u.role) FROM UserModel u")
+    List<UserOutputDTO> findAllUsers();
 
     Optional<UserModel> findByEmail(String email);
 }

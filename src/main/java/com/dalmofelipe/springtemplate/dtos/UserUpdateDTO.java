@@ -5,6 +5,8 @@ import org.springframework.beans.BeanUtils;
 import com.dalmofelipe.springtemplate.entities.UserModel;
 import com.dalmofelipe.springtemplate.enums.UserRole;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,19 +15,21 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDto {
+public class UserUpdateDTO {
 
+    @Size(min = 3, max = 50, message = "{user.name.size}")
     private String name;
+
+    @Email(message = "{user.email.invalid}")
     private String email;
+    
+    @Size(min = 6, max = 20, message = "{user.password.size}")
     private String password;
+    
     private UserRole role;
 
-
-    // para uso no repositoty - findAllUsers
-    public UserDto(String name, String email, UserRole role) {
-        this.name = name;
-        this.email = email;
-        this.role = role;
+    {
+        this.role = UserRole.JUNIOR;
     }
 
     public UserModel toModel() {

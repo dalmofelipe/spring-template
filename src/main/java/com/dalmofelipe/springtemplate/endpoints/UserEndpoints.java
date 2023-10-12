@@ -6,6 +6,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,9 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dalmofelipe.springtemplate.dtos.UserDto;
+import com.dalmofelipe.springtemplate.dtos.UserCreateDTO;
+import com.dalmofelipe.springtemplate.dtos.UserUpdateDTO;
 import com.dalmofelipe.springtemplate.responses.ResponseHandler;
 import com.dalmofelipe.springtemplate.services.UserService;
+
+import jakarta.validation.Valid;
 
 
 @RestController
@@ -38,18 +42,18 @@ public class UserEndpoints {
     }
 
     @GetMapping("/{userId}")
-    public ResponseEntity<UserDto> showUser(@PathVariable UUID userId) {
+    public ResponseEntity<UserCreateDTO> showUser(@PathVariable UUID userId) {
         return ResponseEntity.ok().body(userService.showUser(userId));
     }
 
     @PostMapping
-    public ResponseEntity<Object> saveUser(@RequestBody UserDto userDto) {
-        return ResponseHandler.generateResponse("create",HttpStatus.OK, userService.save(userDto));
+    public ResponseEntity<Object> saveUser(@Valid @RequestBody UserCreateDTO userDTO) {
+        return ResponseHandler.generateResponse("create", HttpStatus.OK, userService.save(userDTO));
     }
 
     @PutMapping("/{userId}")
-    public ResponseEntity<Object> updateUser(@RequestBody UserDto userDto, @PathVariable UUID userId) {
-        return ResponseHandler.generateResponse("update", HttpStatus.OK, userService.update(userId, userDto));
+    public ResponseEntity<Object> updateUser(@Validated @RequestBody UserUpdateDTO updateDTO, @PathVariable UUID userId) {
+        return ResponseHandler.generateResponse("update", HttpStatus.OK, userService.update(userId, updateDTO));
     }
 
     @DeleteMapping("/{userId}")
@@ -88,5 +92,4 @@ public class UserEndpoints {
 
         return "Olá " + role + "! " + ulHtml;
     }
-
 }
