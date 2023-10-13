@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import org.apache.commons.text.StrSubstitutor;
+import org.apache.commons.text.StringSubstitutor;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
@@ -41,10 +41,10 @@ public class ExceptionHandlerAdvice {
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<ApiErrorDTO> handlerMethodArgumentNotValid(
-            MethodArgumentNotValidException exception) {
+    public ResponseEntity<ApiErrorDTO> handlerMethodArgumentNotValid(MethodArgumentNotValidException exception) {
         ((org.slf4j.Logger) logger)
             .error("Exception {}, Message: {}", exception.getClass().getName(), exception.getMessage());
+            
         Set<ErrorDTO> errors = exception.getBindingResult()
             .getFieldErrors()
             .stream()
@@ -94,7 +94,7 @@ public class ExceptionHandlerAdvice {
 
     private String bindExceptionKeywords(Map<String, Object> keywords, String exceptionKey) {
         String message = messageSource.getMessage(exceptionKey, null, LocaleContextHolder.getLocale());
-        return Objects.nonNull(keywords) ? new StrSubstitutor(keywords).replace(message) : message;
+        return Objects.nonNull(keywords) ? new StringSubstitutor(keywords).replace(message) : message;
     }
 
     private HttpStatus getResponseStatus(Throwable exception) {
