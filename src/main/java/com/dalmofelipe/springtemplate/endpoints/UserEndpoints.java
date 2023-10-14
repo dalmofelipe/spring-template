@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dalmofelipe.springtemplate.dtos.UserCreateDTO;
+import com.dalmofelipe.springtemplate.dtos.UserOutputDTO;
 import com.dalmofelipe.springtemplate.dtos.UserUpdateDTO;
 import com.dalmofelipe.springtemplate.responses.ResponseHandler;
 import com.dalmofelipe.springtemplate.services.UserService;
@@ -38,29 +39,43 @@ public class UserEndpoints {
 
     @GetMapping
     public ResponseEntity<Object> listUsers() {
-        return ResponseHandler.generateResponse("read all", HttpStatus.OK, userService.listAll());
+        return ResponseHandler.generateResponse("list all", HttpStatus.OK, 
+            userService.listAll());
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<Object> searchUsers(
+        @RequestParam(required = false) String name,
+        @RequestParam(required = false) String role
+    ) {
+        return ResponseHandler.generateResponse("search by filters", HttpStatus.OK, 
+            userService.searchWithFilters(name, role));
     }
 
     @GetMapping("/{userId}")
-    public ResponseEntity<UserCreateDTO> showUser(@PathVariable UUID userId) {
+    public ResponseEntity<UserOutputDTO> showUser(@PathVariable UUID userId) {
         return ResponseEntity.ok().body(userService.showUser(userId));
     }
 
     @PostMapping
     public ResponseEntity<Object> saveUser(@Valid @RequestBody UserCreateDTO userDTO) {
-        return ResponseHandler.generateResponse("create", HttpStatus.OK, userService.save(userDTO));
+        return ResponseHandler.generateResponse("created", HttpStatus.CREATED, 
+            userService.save(userDTO));
     }
 
     @PutMapping("/{userId}")
-    public ResponseEntity<Object> updateUser(@Validated @RequestBody UserUpdateDTO updateDTO, @PathVariable UUID userId) {
-        return ResponseHandler.generateResponse("update", HttpStatus.OK, userService.update(userId, updateDTO));
+    public ResponseEntity<Object> updateUser(
+        @Validated @RequestBody UserUpdateDTO updateDTO, @PathVariable UUID userId
+    ) {
+        return ResponseHandler.generateResponse("updated", HttpStatus.OK, 
+            userService.update(userId, updateDTO));
     }
 
     @DeleteMapping("/{userId}")
     public ResponseEntity<Object> deleteUser(@PathVariable UUID userId) {
         try {
             userService.remove(userId);
-            return ResponseHandler.generateResponse("delete", HttpStatus.NO_CONTENT, null);
+            return ResponseHandler.generateResponse("deleted", HttpStatus.NO_CONTENT, null);
         } catch(Exception e) {
             return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.BAD_REQUEST, null);
         }
@@ -68,10 +83,10 @@ public class UserEndpoints {
 
     @GetMapping("/filter")
     public String filterUsers(
-            @RequestParam(required = false) String role,
-            @RequestParam(required = false) List<String> words,
-            @RequestParam(required = false) List<Double> numbers) {
-
+        @RequestParam(required = false) String role,
+        @RequestParam(required = false) List<String> words,
+        @RequestParam(required = false) List<Double> numbers
+    ) {
         StringBuilder ulHtml = new StringBuilder();
 
         if(words != null) {

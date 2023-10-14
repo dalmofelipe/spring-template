@@ -26,21 +26,22 @@ public class UserService {
         return userRepository.findAllUsers();
     }
 
+    public List<UserOutputDTO> searchWithFilters(String name, String role) {
+        return userRepository.searchUserByFilters(name, role)
+            .stream().map(u -> u.toDTO()).toList();
+    }
+
     public UserModel save(UserCreateDTO userDto) {
         Optional<UserModel> opt = userRepository.findByEmail(userDto.getEmail());
         if (opt.isPresent())
             throw new EmailAlreadyInUseException();
 
-        var user = new UserModel();
-        user.setName(userDto.getName());
-        user.setEmail(userDto.getEmail());
-        user.setPassword(userDto.getPassword());
-        user.setRole(userDto.getRole());
-
+        var user = userDto.toModel();
+        
         return userRepository.save(user);
     }
 
-    public UserCreateDTO showUser(UUID userId) {
+    public UserOutputDTO showUser(UUID userId) {
         Optional<UserModel> opt = userRepository.findById(userId);
         
         return opt.map(UserModel::toDTO).orElseThrow(() -> new UserNotFoundException());
@@ -55,11 +56,11 @@ public class UserService {
         if(opt.isEmpty())
             throw new UserNotFoundException();
 
-        var user = opt.get();
-        user.setName(updateDto.getName() != null ? updateDto.getName() : user.getName());
-        user.setEmail(updateDto.getEmail() != null ? updateDto.getEmail() : user.getEmail());
-        user.setRole(updateDto.getRole() != null ? updateDto.getRole() : user.getRole());
+        var userDb = opt.get();
+        userDb.setName(updateDto.getName() != null ? updateDto.getName() : userDb.getName());
+        userDb.setEmail(updateDto.getEmail() != null ? updateDto.getEmail() : userDb.getEmail());
+        userDb.setRole(updateDto.getRole() != null ? updateDto.getRole() : userDb.getRole());
         
-        return userRepository.save(user);
+        return userRepository.save(userDb);
     }
 }

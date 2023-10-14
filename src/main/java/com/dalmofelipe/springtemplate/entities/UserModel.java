@@ -6,7 +6,7 @@ import java.util.UUID;
 import org.springframework.beans.BeanUtils;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.dalmofelipe.springtemplate.dtos.UserCreateDTO;
+import com.dalmofelipe.springtemplate.dtos.UserOutputDTO;
 import com.dalmofelipe.springtemplate.enums.UserRole;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -59,8 +59,8 @@ public class UserModel {
         this.createdAt = LocalDateTime.now();
     }
 
-    public UserCreateDTO toDTO() {
-        UserCreateDTO dto = new UserCreateDTO();
+    public UserOutputDTO toDTO() {
+        UserOutputDTO dto = new UserOutputDTO();
         BeanUtils.copyProperties(this, dto);
         return dto;
     }

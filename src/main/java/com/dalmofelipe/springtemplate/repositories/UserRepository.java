@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.dalmofelipe.springtemplate.dtos.UserOutputDTO;
@@ -19,5 +20,13 @@ public interface UserRepository extends JpaRepository<UserModel, UUID> {
     @Query("SELECT new com.dalmofelipe.springtemplate.dtos.UserOutputDTO(u.id, u.name, u.email, u.role) FROM UserModel u")
     List<UserOutputDTO> findAllUsers();
 
+
     Optional<UserModel> findByEmail(String email);
+
+    
+    @Query(
+        value = "SELECT * FROM TB_USERS WHERE name LIKE CONCAT('%',:name,'%') AND role LIKE CONCAT('%',:role,'%')", 
+        nativeQuery = true
+    )
+    List<UserModel> searchUserByFilters(@Param("name") String name, @Param("role") String role);
 }
