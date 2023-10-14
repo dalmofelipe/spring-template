@@ -27,7 +27,7 @@ import jakarta.validation.Valid;
 
 
 @RestController
-@RequestMapping(value = "/users")
+@RequestMapping(value = "/api/users")
 public class UserEndpoints {
 
     @Autowired
@@ -83,7 +83,7 @@ public class UserEndpoints {
 
     @GetMapping("/filter")
     public String filterUsers(
-        @RequestParam(required = false) String role,
+        @RequestParam(required = false) String name,
         @RequestParam(required = false) List<String> words,
         @RequestParam(required = false) List<Double> numbers
     ) {
@@ -105,6 +105,6 @@ public class UserEndpoints {
             ulHtml.append("</ul>");
         }
 
-        return "Olá " + role + "! " + ulHtml;
+        return "Olá " + name + "! " + ulHtml;
     }
 }
