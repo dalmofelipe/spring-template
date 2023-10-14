@@ -32,7 +32,7 @@ class UserTests {
     void shouldReturnAUserSavedFromSQL() {
         ResponseEntity<String> response = restTemplate
                 //.withBasicAuth("Dalmo", "123123")
-                .getForEntity("/users/df6e663a-f302-444a-a7fa-5ebecfa160de", String.class);
+                .getForEntity("/api/users/df6e663a-f302-444a-a7fa-5ebecfa160de", String.class);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 
@@ -48,7 +48,7 @@ class UserTests {
     void shouldReturnAUserSavedFromSQLMappedToModel() {
         ResponseEntity<UserOutputDTO> response = restTemplate
                 //.withBasicAuth("Dalmo", "123123")
-                .getForEntity("/users/df6e663a-f302-444a-a7fa-5ebecfa160de", UserOutputDTO.class);
+                .getForEntity("/api/users/df6e663a-f302-444a-a7fa-5ebecfa160de", UserOutputDTO.class);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 
@@ -69,11 +69,11 @@ class UserTests {
         user.setRole(UserRole.PLENO);
 
         ResponseEntity<Void> createResponse = restTemplate
-            .postForEntity("/users", user, Void.class);
+            .postForEntity("/api/users", user, Void.class);
         assertThat(createResponse.getStatusCode()).isEqualTo(HttpStatus.CREATED);
 
         ResponseEntity<String> getResponse = restTemplate
-            .getForEntity("/users/search?name=From", String.class);
+            .getForEntity("/api/users/search?name=From", String.class);
         assertThat(getResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
 
         ObjectMapper mapper = new ObjectMapper();

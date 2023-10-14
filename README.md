@@ -22,7 +22,7 @@
 - [x] .env / sh - env settings
 - [x] docker-compose para bases de dados
 - [x] Tratamento de erros e validações
-- [ ] Documentação com Swagger Spring Boot 3 + Swagger + OpenAPI 3 SpringDoc
+- [x] Documentação com Swagger Spring Boot 3 + Swagger + OpenAPI 3 SpringDoc
 - [ ] Requisições Externas - Webclient - FeingClient - RestTemplate - JsonNode
 - [x] Teste JUnit JsonNode
 - [ ] Teste Mockito
