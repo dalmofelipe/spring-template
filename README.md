@@ -4,7 +4,9 @@
 
 ---
 
-**Run in DEV** é iniciado na porta ```8000``` com ```SQLite```. Não é necessário nenhuma variável de ambiente.
+### Running DEV
+
+É iniciado na porta ```8000``` com ```SQLite```. Não será necessário variáveis de ambiente.
 
 ```sh
 $ spring-template> ./gradlew clean bootRun
@@ -15,9 +17,9 @@ $ spring-template> ./gradlew test
 
 ---
 
-**Run in TEST** é iniciado na porta ```8090``` com ```MySQL```. Configurar variáveis de ambiente em ```./envs/test.env.sh``` no LINUX ou ```./envs/test.env.ps1``` para o WINDOWS. 
+### Running TEST
 
-Por padrão o banco de dados no ambiente de *TEST* é totalmente controlado pela Spring Data JPA. Os arquivos de configuração do DB deste ambiente, estão desabilitados no ```application.properties```, confira as flags ```spring.flyway.enabled=false``` e ```spring.jpa.hibernate.ddl-auto=update```.
+É iniciado na porta ```8090``` com ```MySQL```. Configurar variáveis de ambiente em ```./envs/test.env.sh``` no LINUX ou ```./envs/test.env.ps1``` para o WINDOWS. 
 
 ```sh
 $ spring-template> .\envs\test.env.sh
@@ -25,8 +27,13 @@ $ spring-template> .\envs\test.env.sh
 $ spring-template> ./gradlew clean bootRun
 ```
 
+Por padrão, o banco de dados no ambiente de **TEST** é totalmente controlado pela **Spring Data JPA**. Os arquivos de configuração do DB deste ambiente, estão desabilitados no ```application.properties```, confira as flags ```spring.flyway.enabled=false``` e ```spring.jpa.hibernate.ddl-auto=update```.
 
-**Run in PROD** é iniciado na porta ```8080``` com ```PostgreSQL```. Configurar variáveis de ambiente em ```./envs/prod.env.sh``` no LINUX ou ```./envs/prod.env.ps1``` para o WINDOWS. 
+---
+
+### Running PROD
+
+É iniciado na porta ```8080``` com ```PostgreSQL```. Configurar variáveis de ambiente em ```./envs/prod.env.sh``` no LINUX ou ```./envs/prod.env.ps1``` para o WINDOWS. 
 
 ```sh
 $ spring-template> .\envs\prod.env.sh
