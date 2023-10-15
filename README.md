@@ -4,13 +4,43 @@
 
 ---
 
-**Run**
+**Run in DEV** é iniciado na porta ```8000``` com ```SQLite```. Não é necessário nenhuma variável de ambiente.
 
 ```sh
-./gradlew clean bootRun
+$ spring-template> ./gradlew clean bootRun
+
+# Para rodar os tests not terminal
+$ spring-template> ./gradlew test
 ```
 
 ---
+
+**Run in TEST** é iniciado na porta ```8090``` com ```MySQL```. Configurar variáveis de ambiente em ```./envs/test.env.sh``` no LINUX ou ```./envs/test.env.ps1``` para o WINDOWS. 
+
+Por padrão o banco de dados no ambiente de *TEST* é totalmente controlado pela Spring Data JPA. Os arquivos de configuração do DB deste ambiente, estão desabilitados no ```application.properties```, confira as flags ```spring.flyway.enabled=false``` e ```spring.jpa.hibernate.ddl-auto=update```.
+
+```sh
+$ spring-template> .\envs\test.env.sh
+
+$ spring-template> ./gradlew clean bootRun
+```
+
+
+**Run in PROD** é iniciado na porta ```8080``` com ```PostgreSQL```. Configurar variáveis de ambiente em ```./envs/prod.env.sh``` no LINUX ou ```./envs/prod.env.ps1``` para o WINDOWS. 
+
+```sh
+$ spring-template> .\envs\prod.env.sh
+
+$ spring-template> ./gradlew clean bootRun
+```
+
+Para executar os testes em ambientes de ```TEST``` E ```PROD```, será necessário informar as variáveis de ambiente para as rotinas de testes.
+
+---
+
+<br>
+
+### Todo
 
 - [x] Requests - Body - Query - Param
 - [x] Domain - Dto / Records - Enums - Entidades / Models
@@ -26,3 +56,9 @@
 - [ ] Teste Mockito
 - [ ] MongoDB
 - [ ] GraphQL
+
+<br>
+
+### Tofix
+
+- [ ] Corrigir migrations do postgres para o tipo enum USER_ROLE
