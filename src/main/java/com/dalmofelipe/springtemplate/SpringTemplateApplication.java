@@ -10,11 +10,13 @@ import io.swagger.v3.oas.annotations.info.License;
 
 // https://springdoc.org/#can-i-customize-openapi-object-programmatically
 // https://github.com/swagger-api/swagger-core/wiki/Swagger-2.X---Annotations#OpenAPIDefinition
+// https://www.bezkoder.com/swagger-3-annotations/
+// https://springdoc.org/#migrating-from-springfox
 @OpenAPIDefinition(
 	info = @Info(
 		title = "String Template",
 		version = "0.0.1",
-		description = "API de Usuários",
+		description = "Repositório de referência para projeto com Spring Boot.\n\nAPI de Usuários",
 		license = @License(name = "Apache 2.0"),
 		contact = @Contact(url = "http://github.com/dalmofelipe", name = "Dalmo", email = "dalmofelipe.dev@gmail.com")
 	)

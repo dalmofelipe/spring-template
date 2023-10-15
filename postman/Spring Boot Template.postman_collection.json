@@ -1,0 +1,247 @@
+{
+	"info": {
+		"_postman_id": "a8a2bfb3-6b22-4901-8e6e-92a0f3338bf0",
+		"name": "Spring Boot Template",
+		"description": "Template base para projetos em Spring Boot",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18243433"
+	},
+	"item": [
+		{
+			"name": "custom-exception-examples",
+			"item": [
+				{
+					"name": "validation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"1\",\n    \"name\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/custom-exception-examples/validation",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"custom-exception-examples",
+								"validation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "business",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"1\",\n    \"name\": \"teste\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/custom-exception-examples/business",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"custom-exception-examples",
+								"business"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "business2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"1\",\n    \"name\": \"params\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/custom-exception-examples/business",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"custom-exception-examples",
+								"business"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "READ obtém um Usuário pelo ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/users/df6e663a-f302-444a-a7fa-5ebecfa160de",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								"df6e663a-f302-444a-a7fa-5ebecfa160de"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "READ lista todos Usuários",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/users",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE cria um novo Usuário",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Ana\",\n    \"email\": \"ana2@com.br\",\n    \"password\": \"123123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/users",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE atualiza dados de um Usuário",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Up Date\",\n    \"email\": \"up.date@com\",\n    \"password\": \"11up22\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/users/11433ddc-efa8-4e62-b7fe-8bdc3ba46bb6",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								"11433ddc-efa8-4e62-b7fe-8bdc3ba46bb6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "READ pesquisa Usuários com filtros",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/users/search?name=D",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								"search"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "D"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE exclui Usuário pelo ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/users/11433ddc-efa8-4e62-b7fe-8bdc3ba46bb6",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								"11433ddc-efa8-4e62-b7fe-8bdc3ba46bb6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
