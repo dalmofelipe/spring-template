@@ -15,10 +15,11 @@ import io.swagger.v3.oas.annotations.info.License;
 @OpenAPIDefinition(
 	info = @Info(
 		title = "String Template",
-		version = "0.0.1",
+		version = "0.0.1-"+"${application.environment}",
 		description = "Repositório de referência para projeto com Spring Boot.\n\nAPI de Usuários",
 		license = @License(name = "Apache 2.0"),
-		contact = @Contact(url = "http://github.com/dalmofelipe", name = "Dalmo", email = "dalmofelipe.dev@gmail.com")
+		contact = @Contact(url = "${application.repository}", name = "${application.author}", 
+			email = "${application.author.email}")
 	)
 )
 @SpringBootApplication()

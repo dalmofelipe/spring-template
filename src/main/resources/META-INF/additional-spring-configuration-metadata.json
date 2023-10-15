@@ -1,21 +1,29 @@
 {
-  "properties": [
-    {
-      "name": "app.repo",
-      "type": "java.lang.String",
-      "description": "A description for 'app.repo'"
-    },{
-      "name": "app.author",
-      "type": "java.lang.String",
-      "description": "A description for 'app.author'"
-    },{
-      "name": "app.release",
-      "type": "java.lang.String",
-      "description": "A description for 'app.release'"
-    },{
-      "name": "app.env",
-      "type": "java.lang.String",
-      "description": "A description for 'app.env'"
-    }
-  ]
+    "properties": [
+        {
+            "name": "application.release",
+            "type": "java.lang.String",
+            "description": "A description for 'application.release'"
+        },
+        {
+            "name": "application.repository",
+            "type": "java.lang.String",
+            "description": "A description for 'application.repository'"
+        },
+        {
+            "name": "application.author",
+            "type": "java.lang.String",
+            "description": "A description for 'application.author'"
+        },
+        {
+            "name": "application.author.email",
+            "type": "java.lang.String",
+            "description": "A description for 'application.author.email'"
+        },
+        {
+            "name": "application.environment",
+            "type": "java.lang.String",
+            "description": "A description for 'application.environment'"
+        }
+    ]
 }
