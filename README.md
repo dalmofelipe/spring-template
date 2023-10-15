@@ -1,6 +1,4 @@
-<h1 align="center">SpringTemplate</h1>
-
-<p align="center"><small>0.0.1</small></p>
+<h2 align="center">Spring Template</h2>
 
 <p align="center">Repositório de referência para projetos em Spring Boot!</p>
 
@@ -24,8 +22,7 @@
 - [x] Tratamento de erros e validações
 - [x] Documentação com Swagger Spring Boot 3 + Swagger + OpenAPI 3 SpringDoc
 - [ ] Requisições Externas - Webclient - FeingClient - RestTemplate - JsonNode
-- [x] Teste JUnit JsonNode
+- [x] Teste JUnit RestTemplate JsonNode
 - [ ] Teste Mockito
-- [ ] Localização e Internacionalização
 - [ ] MongoDB
 - [ ] GraphQL
