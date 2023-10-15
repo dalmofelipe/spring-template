@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres-db
+    environment:
+      POSTGRES_DB: spring
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: 123123
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - "5432:5432"
+    volumes:
+      - ~/dev/pgdata-spring:/var/lib/postgresql/data/pgdata
+    networks:
+      - database-network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin-db
+    ports:
+      - "5080:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: spring.template@example.com
+      PGADMIN_DEFAULT_PASSWORD: 123123
+    volumes:
+      # chown -R 5050:5050 ~/dev/pgadmin-data-spring
+      - ~/dev/pgadmin-data-spring:/var/lib/pgadmin
+    networks:
+      - database-network
+    depends_on:
+      - postgres
+
+networks:
+  database-network:
+
+volumes:
+  pgdata-spring:
+  pgadmin-data-spring:
