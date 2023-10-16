@@ -6,13 +6,20 @@
 
 ### Running DEV
 
-É iniciado na porta ```8000``` com ```SQLite```. Não será necessário variáveis de ambiente.
+Configure a propriedade para valor *dev*, ```spring.profiles.active=dev``` em ```./src/main/resources/application.properties```
+
+O ambiente **DEV** é iniciado na porta **8000** com **SQLite**. Não será necessário variáveis de ambiente.
 
 ```sh
-$ spring-template> ./gradlew clean bootRun
+./gradlew clean bootRun
+```
 
-# Para rodar os tests not terminal
-$ spring-template> ./gradlew test
+No browser, acesse a documentação ```http://localhost:8000/api/docs``` ou abra o conjunto de requests do postman em ```./postman/Spring Boot Template.postman_collection.json```
+
+Também poderá executar as rotinas de testes:
+
+```sh
+./gradlew test
 ```
 
 ---
