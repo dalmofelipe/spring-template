@@ -1,0 +1,46 @@
+version: '3'
+
+services:  
+  mysql:
+    image: mysql:latest
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: spring
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: 123123
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysqlconf.cnf:/etc/mysql/conf.d/custom.cnf
+      - ~/dev/mysqldata-spring:/var/lib/mysql
+    networks:
+      - database-network
+
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: phpmyadmin
+    ports:
+      - 5080:80
+    environment:
+      - PMA_ARBITRARY=1
+    depends_on:
+      - mysql
+    networks:
+      - database-network
+
+  adminer:
+    image: adminer
+    container_name: adminer-mysql
+    ports:
+      - 5090:8080
+    depends_on:
+      - mysql
+    networks:
+      - database-network
+
+networks:
+  database-network:
+
+volumes:
+  mysqldata-spring:

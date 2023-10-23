@@ -2,9 +2,9 @@
 
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
-ALTER TABLE TB_USERS ALTER COLUMN id SET DATA TYPE UUID USING (uuid_generate_v4());
+ALTER TABLE tb_users ALTER COLUMN id SET DATA TYPE UUID USING (uuid_generate_v4());
 
-INSERT INTO TB_USERS(id, name, email, password, role)
+INSERT INTO tb_users (id, name, email, password, role)
 VALUES 
 ('df6e663a-f302-444a-a7fa-5ebecfa160de', 'Dalmo', 'dalmo@email.com', '123123', 'JEDI'),
 ('07300028-a924-47cf-ad54-1c147a95a9a4', 'Felipe', 'felipe@email.com', '321321', 'JUNIOR'),

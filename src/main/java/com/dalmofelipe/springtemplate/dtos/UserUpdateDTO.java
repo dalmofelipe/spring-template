@@ -28,10 +28,6 @@ public class UserUpdateDTO {
     
     private UserRole role;
 
-    {
-        this.role = UserRole.JUNIOR;
-    }
-
     public UserModel toModel() {
         UserModel model = new UserModel();
         BeanUtils.copyProperties(this, model);

@@ -45,8 +45,9 @@ public class UserModel {
     @Column(nullable = false)
     private String password;
 
-    @Enumerated(EnumType.STRING)
     @Column(nullable = true)
+    @Enumerated(EnumType.STRING)
+    // @ColumnTransformer(write = "?::user_role", read = "?::user_role") // postgres
     private UserRole role;
 
     @JsonProperty("created_at")

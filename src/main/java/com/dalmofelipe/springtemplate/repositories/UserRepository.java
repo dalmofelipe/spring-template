@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.dalmofelipe.springtemplate.dtos.UserOutputDTO;
 import com.dalmofelipe.springtemplate.entities.UserModel;
+import com.dalmofelipe.springtemplate.enums.UserRole;
 
 
 @Repository
@@ -25,8 +26,8 @@ public interface UserRepository extends JpaRepository<UserModel, UUID> {
 
     
     @Query(
-        value = "SELECT * FROM TB_USERS WHERE name LIKE CONCAT('%',:name,'%') AND role LIKE CONCAT('%',:role,'%')", 
+        value = "SELECT * FROM tb_users WHERE name LIKE CONCAT('%',:name,'%') AND role LIKE CONCAT('%',:role,'%')", 
         nativeQuery = true
     )
-    List<UserModel> searchUserByFilters(@Param("name") String name, @Param("role") String role);
+    List<UserModel> searchUserByFilters(@Param("name") String name, @Param("role") UserRole role);
 }

@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.dalmofelipe.springtemplate.dtos.UserCreateDTO;
 import com.dalmofelipe.springtemplate.dtos.UserOutputDTO;
 import com.dalmofelipe.springtemplate.dtos.UserUpdateDTO;
+import com.dalmofelipe.springtemplate.enums.UserRole;
 import com.dalmofelipe.springtemplate.exceptions.dtos.ApiErrorDTO;
 import com.dalmofelipe.springtemplate.responses.ResponseHandler;
 import com.dalmofelipe.springtemplate.services.UserService;
@@ -70,7 +71,7 @@ public class UserEndpoints {
     @GetMapping("/search")
     public ResponseEntity<Object> searchUsers(
         @RequestParam(required = false) String name,
-        @RequestParam(required = false) String role
+        @RequestParam(required = false) UserRole role
     ) {
         return ResponseHandler.generateResponse("search by filters", HttpStatus.OK, 
             userService.searchWithFilters(name, role));

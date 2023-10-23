@@ -11,6 +11,7 @@ import com.dalmofelipe.springtemplate.dtos.UserCreateDTO;
 import com.dalmofelipe.springtemplate.dtos.UserOutputDTO;
 import com.dalmofelipe.springtemplate.dtos.UserUpdateDTO;
 import com.dalmofelipe.springtemplate.entities.UserModel;
+import com.dalmofelipe.springtemplate.enums.UserRole;
 import com.dalmofelipe.springtemplate.exceptions.business.EmailAlreadyInUseException;
 import com.dalmofelipe.springtemplate.exceptions.business.UserNotFoundException;
 import com.dalmofelipe.springtemplate.repositories.UserRepository;
@@ -26,7 +27,7 @@ public class UserService {
         return userRepository.findAllUsers();
     }
 
-    public List<UserOutputDTO> searchWithFilters(String name, String role) {
+    public List<UserOutputDTO> searchWithFilters(String name, UserRole role) {
         return userRepository.searchUserByFilters(name, role)
             .stream().map(u -> u.toDTO()).toList();
     }

@@ -2,6 +2,8 @@
 
 <p align="center">Repositório de referência para projetos em Spring Boot!</p>
 
+<p align="center">Microsserviço de Autenticação e Autorização!</p>
+
 ---
 
 ### Running DEV
@@ -70,9 +72,12 @@ Para executar os testes em ambientes de ```TEST``` E ```PROD```, será necessár
 - [ ] Teste Mockito
 - [ ] MongoDB
 - [ ] GraphQL
+- [ ] Dockerfile e build da imagem Docker
+- [ ] Workflow GitHub Actions subir imagem no DockerHub
+- [ ] Helm Chart local ou em repo para CI/CD
 
 <br>
 
 ### Tofix
 
-- [ ] Corrigir migrations do postgres para o tipo enum USER_ROLE
+- [ ] Corrigir enum USER_ROLE como query param em searchByFilters
