@@ -70,9 +70,8 @@ Para executar os testes em ambientes de ```TEST``` E ```PROD```, será necessár
 - [ ] Teste Mockito
 - [ ] MongoDB
 - [ ] GraphQL
-
-<br>
-
-### Tofix
-
-- [ ] Corrigir migrations do postgres para o tipo enum USER_ROLE
+- [ ] Ajustar o CORS para uso Swagger UI
+- [ ] Github Actions Workflow para build da imagem Docker e enviar ao DockerHub
+- [ ] Criar Helm Charts
+- [ ] Manifestos para deploy no Kubernetes
+- [ ] Aplicar SOLID e Clean Code com alguma esteira automatizada
