@@ -31,20 +31,14 @@ services:
       - database-network
     depends_on:
       - postgres
-  
-  mysql:
-    image: mysql:latest
-    container_name: mysql-db
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: spring
-      MYSQL_USER: myuser
-      MYSQL_PASSWORD: 123123
+
+  adminer:
+    image: adminer
+    container_name: adminer-pg
     ports:
-      - "3306:3306"
-    volumes:
-      - ./mysqlconf.cnf:/etc/mysql/conf.d/custom.cnf
-      - ~/dev/mysqldata-spring:/var/lib/mysql
+      - 5090:8080
+    depends_on:
+      - postgres
     networks:
       - database-network
 
@@ -54,4 +48,3 @@ networks:
 volumes:
   pgdata-spring:
   pgadmin-data-spring:
-  mysqldata-spring:
