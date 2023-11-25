@@ -70,8 +70,9 @@ Para executar os testes em ambientes de ```TEST``` E ```PROD```, será necessár
 - [ ] Teste Mockito
 - [ ] MongoDB
 - [ ] GraphQL
+- [ ] Mensageria Kafka / RabbitMQ
 - [ ] Ajustar o CORS para uso Swagger UI
-- [ ] Github Actions Workflow para build da imagem Docker e enviar ao DockerHub
-- [ ] Criar Helm Charts
+- [ ] Github Actions Workflow para build da imagem Docker, tags e envio ao registry
+- [ ] Criar Helm Charts 
 - [ ] Manifestos para deploy no Kubernetes
-- [ ] Aplicar SOLID e Clean Code com alguma esteira automatizada
+- [ ] Aplicar SOLID, Clean Code e Archetecture
