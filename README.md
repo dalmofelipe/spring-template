@@ -65,8 +65,8 @@ Para executar os testes em ambientes de ```TEST``` E ```PROD```, será necessár
 - [x] docker-compose para bases de dados
 - [x] Tratamento de erros e validações
 - [x] Documentação com Swagger Spring Boot 3 + Swagger + OpenAPI 3 SpringDoc
-- [ ] Requisições Externas - Webclient - FeingClient - RestTemplate - JsonNode
-- [x] Teste JUnit RestTemplate JsonNode
+- [ ] Requisições Externas - RestTemplate - FeingClient - WebClient
+- [x] Teste JUnit
 - [ ] Teste Mockito
 - [ ] MongoDB
 - [ ] GraphQL
@@ -75,4 +75,4 @@ Para executar os testes em ambientes de ```TEST``` E ```PROD```, será necessár
 - [ ] Github Actions Workflow para build da imagem Docker, tags e envio ao registry
 - [ ] Criar Helm Charts 
 - [ ] Manifestos para deploy no Kubernetes
-- [ ] Aplicar SOLID, Clean Code e Archetecture
+- [ ] Aplicar SOLID, Clean Code e Architecture

@@ -143,7 +143,8 @@ public class UserEndpoints {
     })
     @PutMapping("/{userId}")
     public ResponseEntity<Object> updateUser(
-        @Validated @RequestBody UserUpdateDTO updateDTO, @PathVariable UUID userId
+        @Validated @RequestBody UserUpdateDTO updateDTO, 
+        @PathVariable UUID userId
     ) {
         return ResponseHandler.generateResponse("updated", HttpStatus.OK, 
             userService.update(userId, updateDTO));

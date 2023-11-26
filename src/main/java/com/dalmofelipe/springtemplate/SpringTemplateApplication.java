@@ -1,5 +1,7 @@
 package com.dalmofelipe.springtemplate;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -25,8 +27,11 @@ import io.swagger.v3.oas.annotations.info.License;
 @SpringBootApplication()
 public class SpringTemplateApplication {
 
+	private static final Logger log = LoggerFactory.getLogger(SpringTemplateApplication.class);
+
 	public static void main(String[] args) {
 		SpringApplication.run(SpringTemplateApplication.class, args);
+		log.info("OK - Running");
 	}
 
 }

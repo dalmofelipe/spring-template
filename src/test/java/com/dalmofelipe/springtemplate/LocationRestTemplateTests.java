@@ -19,7 +19,7 @@ import com.jayway.jsonpath.DocumentContext;
 import com.jayway.jsonpath.JsonPath;
 
 @SpringBootTest(webEnvironment=WebEnvironment.RANDOM_PORT)
-public class LocationTests {
+public class LocationRestTemplateTests {
 
     private String baseURL = "https://ipapi.co/json";
 
@@ -28,7 +28,8 @@ public class LocationTests {
 
 
     @Test
-    void getLocationDirectlyTest() throws JsonMappingException, JsonProcessingException {
+    void shouldBeGetLocationByRestTemplateWithSuccessTest() 
+        throws JsonMappingException, JsonProcessingException {
         
         ResponseEntity<String> response = restTemplate.getForEntity(baseURL, String.class);
 

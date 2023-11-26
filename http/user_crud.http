@@ -1,0 +1,44 @@
+@hostname=localhost
+@port=8000
+@url=http://{{hostname}}:{{port}}
+
+
+### Create new User
+# @name getNewUser
+POST {{url}}/api/users HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Alpaca",
+    "email": "alpaca@email.com",
+    "password": "321321",
+    "role": "SENIOR"
+}
+
+@newUserId = {{getNewUser.response.body.id}}
+
+
+### Get User by ID returned
+GET {{url}}/api/users/{{newUserId}} HTTP/1.1
+
+
+### Get ALL Users
+GET {{url}}/api/users HTTP/1.1
+
+
+### Get ONE User by ID
+GET {{url}}/api/users/11433ddc-efa8-4e62-b7fe-8bdc3ba46bb6 HTTP/1.1
+
+
+### Update User data
+PUT {{url}}/api/users/11433ddc-efa8-4e62-b7fe-8bdc3ba46bb6 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Ana",
+    "email": "ana@email.com"
+}
+
+
+### DELETE User by ID
+DELETE {{url}}/api/users/11433ddc-efa8-4e62-b7fe-8bdc3ba46bb6 HTTP/1.1
