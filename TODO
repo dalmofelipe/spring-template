@@ -1,0 +1,27 @@
+
+- [x] Requests - Body - Query - Param
+- [x] Domain - Dto / Records - Enums - Entidades / Models
+- [x] Databases - SQlite - PostgreSQL - MySQL
+- [x] Environments - applications.properties - dev - prod - test
+- [x] schema.sql - data.sql - Flyway Migrations
+- [x] .env / sh - env settings
+- [x] docker-compose para bases de dados
+- [x] Tratamento de erros e validações
+- [x] Documentação com Swagger Spring Boot 3 + Swagger + OpenAPI 3 SpringDoc
+- [ ] Requisições Externas 
+    - [x] RestClient - IpApiRestClientService
+        - [ ] Toda vez que um usuário for cadastrado, salve a localização no MongoDB
+    - [ ] RestTemplate 
+    - [ ] FeingClient 
+    - [ ] WebClient
+- [ ] Endpoints para upload de arquivos
+- [x] Teste JUnit
+- [ ] Teste Mockito
+- [ ] MongoDB
+- [ ] GraphQL
+- [ ] Mensageria Kafka / RabbitMQ
+- [ ] Ajustar o CORS para uso Swagger UI
+- [ ] Github Actions Workflow para build da imagem Docker, tags e envio ao registry
+- [ ] Manifestos para deploy no Kubernetes
+- [ ] Criar Helm Charts 
+- [ ] Aplicar SOLID, Clean Code e Architecture

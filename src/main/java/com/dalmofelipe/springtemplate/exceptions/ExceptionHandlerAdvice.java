@@ -22,7 +22,7 @@ import com.dalmofelipe.springtemplate.exceptions.dtos.ErrorDTO;
 
 import ch.qos.logback.classic.LoggerContext;
 
-
+@SuppressWarnings("null")
 @ControllerAdvice
 public class ExceptionHandlerAdvice {
 

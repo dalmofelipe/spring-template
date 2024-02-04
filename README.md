@@ -49,30 +49,3 @@ $ spring-template> ./gradlew clean bootRun
 ```
 
 Para executar os testes em ambientes de ```TEST``` E ```PROD```, será necessário informar as variáveis de ambiente para as rotinas de testes.
-
----
-
-<br>
-
-### Todo
-
-- [x] Requests - Body - Query - Param
-- [x] Domain - Dto / Records - Enums - Entidades / Models
-- [x] Databases - SQlite - PostgreSQL - MySQL
-- [x] Environments - applications.properties - dev - prod - test
-- [x] schema.sql - data.sql - Flyway Migrations
-- [x] .env / sh - env settings
-- [x] docker-compose para bases de dados
-- [x] Tratamento de erros e validações
-- [x] Documentação com Swagger Spring Boot 3 + Swagger + OpenAPI 3 SpringDoc
-- [ ] Requisições Externas - RestTemplate - FeingClient - WebClient
-- [x] Teste JUnit
-- [ ] Teste Mockito
-- [ ] MongoDB
-- [ ] GraphQL
-- [ ] Mensageria Kafka / RabbitMQ
-- [ ] Ajustar o CORS para uso Swagger UI
-- [ ] Github Actions Workflow para build da imagem Docker, tags e envio ao registry
-- [ ] Criar Helm Charts 
-- [ ] Manifestos para deploy no Kubernetes
-- [ ] Aplicar SOLID, Clean Code e Architecture

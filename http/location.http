@@ -1,0 +1,7 @@
+@hostname=localhost
+@port=8000
+@url=http://{{hostname}}:{{port}}
+
+
+###
+GET {{url}}/location/rest-client HTTP/1.1

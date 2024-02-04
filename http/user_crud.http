@@ -22,8 +22,14 @@ Content-Type: application/json
 GET {{url}}/api/users/{{newUserId}} HTTP/1.1
 
 
+
+
 ### Get ALL Users
 GET {{url}}/api/users HTTP/1.1
+
+
+### Search with filters
+GET {{url}}/api/users/search HTTP/1.1
 
 
 ### Get ONE User by ID

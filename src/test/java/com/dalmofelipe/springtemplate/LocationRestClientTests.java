@@ -14,6 +14,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.DocumentContext;
 import com.jayway.jsonpath.JsonPath;
 
+@SuppressWarnings("null")
 public class LocationRestClientTests 
 {
     private String baseURL = "https://ipapi.co/json";

@@ -13,6 +13,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
+@SuppressWarnings("null")
 @Configuration
 public class MessagesConfiguration implements WebMvcConfigurer {
 
@@ -24,7 +25,7 @@ public class MessagesConfiguration implements WebMvcConfigurer {
         messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
     }
-
+    
     @Bean
     public LocalValidatorFactoryBean validator(MessageSource messageSource) {
         LocalValidatorFactoryBean bean = new LocalValidatorFactoryBean();

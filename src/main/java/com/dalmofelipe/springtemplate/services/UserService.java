@@ -15,7 +15,7 @@ import com.dalmofelipe.springtemplate.exceptions.business.EmailAlreadyInUseExcep
 import com.dalmofelipe.springtemplate.exceptions.business.UserNotFoundException;
 import com.dalmofelipe.springtemplate.repositories.UserRepository;
 
-
+@SuppressWarnings("null")
 @Service
 public class UserService {
 

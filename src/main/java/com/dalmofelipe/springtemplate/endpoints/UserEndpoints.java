@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,8 +32,10 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 
+@CrossOrigin
 @Tag(name = "Users", description = "Endpoints para gestão de usuários")
 @RestController
 @RequestMapping(value = "/api/users")
@@ -92,7 +95,7 @@ public class UserEndpoints {
         )
     })
     @GetMapping("/{userId}")
-    public ResponseEntity<UserOutputDTO> showUser(@PathVariable UUID userId) {
+    public ResponseEntity<UserOutputDTO> showUser(@NotNull @PathVariable UUID userId) {
         return ResponseEntity.ok().body(userService.showUser(userId));
     }
 
