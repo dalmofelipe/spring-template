@@ -11,7 +11,7 @@
 - [ ] Requisições Externas 
     - [x] RestClient - IpApiRestClientService
         - [ ] Toda vez que um usuário for cadastrado, salve a localização no MongoDB
-    - [ ] RestTemplate 
+    - [x] RestTemplate
     - [ ] FeingClient 
     - [ ] WebClient
 - [ ] Endpoints para upload de arquivos

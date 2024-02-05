@@ -10,13 +10,13 @@ import com.dalmofelipe.springtemplate.records.LocationRecord;
 import com.dalmofelipe.springtemplate.services.IpApiRestClientService;
 
 @RestController
-@RequestMapping(value = "/location/rest-client")
+@RequestMapping(value = "/location")
 public class LocationEndpoints {
 
     @Autowired
     private IpApiRestClientService ipApiRestClientService;
 
-    @GetMapping
+    @GetMapping("/rest-client")
     public ResponseEntity<LocationRecord> getLocation() {
         var location = this.ipApiRestClientService.getLocation();
 

@@ -1,0 +1,7 @@
+@hostname=localhost
+@port=8000
+@url=http://{{hostname}}:{{port}}
+
+
+###
+GET {{url}}/open-movie/rest-template/interstellar HTTP/1.1
