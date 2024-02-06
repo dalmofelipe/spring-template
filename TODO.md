@@ -2,6 +2,8 @@
 - [x] Requests - Body - Query - Param
 - [x] Domain - Dto / Records - Enums - Entidades / Models
 - [x] Databases - SQlite - PostgreSQL - MySQL
+    - [x] CRUD de usuários
+    - [ ] Adicionar classes para Relacionamentos OneToOne, OneToMany & ManyToMany com JPA
 - [x] Environments - applications.properties - dev - prod - test
 - [x] schema.sql - data.sql - Flyway Migrations
 - [x] .env / sh - env settings
@@ -10,18 +12,19 @@
 - [x] Documentação com Swagger Spring Boot 3 + Swagger + OpenAPI 3 SpringDoc
 - [ ] Requisições Externas 
     - [x] RestClient - IpApiRestClientService
-        - [ ] Toda vez que um usuário for cadastrado, salve a localização no MongoDB
-    - [x] RestTemplate
-    - [ ] FeingClient 
-    - [ ] WebClient
+    - [x] RestTemplate / JsonNode - OpenMovieDBRestTemplateService
+    - [x] WebClient - PokeApiWebClientService
+    - [ ] FeingClient
 - [ ] Endpoints para upload de arquivos
-- [x] Teste JUnit
-- [ ] Teste Mockito
+- [ ] Testes Unidade e Integração
+    - [x] Teste JUnit
+    - [ ] Teste Mockito
 - [ ] MongoDB
-- [ ] GraphQL
-- [ ] Mensageria Kafka / RabbitMQ
-- [ ] Ajustar o CORS para uso Swagger UI
+    - [ ] Toda vez que um usuário for cadastrado, salve a localização no MongoDB
+- [ ] GraphQL (branch)
+- [ ] Mensageria Kafka / RabbitMQ (branch)
+- [ ] Ajustar o CORS para uso Swagger UI /api-docs
 - [ ] Github Actions Workflow para build da imagem Docker, tags e envio ao registry
-- [ ] Manifestos para deploy no Kubernetes
 - [ ] Criar Helm Charts 
+- [ ] Manifestos para deploy no Kubernetes
 - [ ] Aplicar SOLID, Clean Code e Architecture
