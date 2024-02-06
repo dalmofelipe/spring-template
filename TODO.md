@@ -20,6 +20,7 @@
     - [x] Teste JUnit
     - [ ] Teste Mockito
 - [ ] MongoDB
+    - [ ] Mongo Atlas // docker compose 
     - [ ] Toda vez que um usuário for cadastrado, salve a localização no MongoDB
 - [ ] GraphQL (branch)
 - [ ] Mensageria Kafka / RabbitMQ (branch)

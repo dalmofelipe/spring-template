@@ -9,7 +9,9 @@ import org.springframework.web.reactive.function.client.ExchangeStrategies;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import com.dalmofelipe.springtemplate.exceptions.business.PokemonNotFoundException;
+import com.dalmofelipe.springtemplate.exceptions.business.PokemonNotFoundWithParamsException;
 import com.dalmofelipe.springtemplate.records.PokemonRecord;
+import com.dalmofelipe.springtemplate.records.PokemonTinyRecord;
 
 import reactor.core.publisher.Mono;
 
@@ -47,21 +49,33 @@ public class PokeApiWebClientService {
         return WebClient
             .builder()
             .exchangeStrategies(this.strategies)
-            .filter(errorHandler())
+            // .filter(errorHandler())
             .baseUrl(baseUrl)
             .build();
     }
     
     public Optional<PokemonRecord> searchPokemonByName(String name) {
-        Optional<PokemonRecord> pokeOpt = this.newClient(pokemonUrl)
+        return this.newClient(pokemonUrl)
             .get()
             .uri(builder -> builder.path(name.toLowerCase()).build())
             .accept(MediaType.APPLICATION_JSON)
             .retrieve()
-            .bodyToMono(PokemonRecord.class)
             //.subscribe()
+            .bodyToMono(PokemonRecord.class)
+            .onErrorResume(e -> Mono.error(new PokemonNotFoundWithParamsException(name)))
             .blockOptional();
-        return pokeOpt;
     }
-    
+
+    public Optional<PokemonTinyRecord> searchPokemonByNameTiny(String pokeName) {
+        return this.newClient(pokemonUrl)
+            .get()
+            .uri(builder -> builder.path(pokeName.toLowerCase()).build())
+            .accept(MediaType.APPLICATION_JSON)
+            .retrieve()
+            //.subscribe()
+            .bodyToMono(PokemonTinyRecord.class)
+            .onErrorResume(e -> Mono.error(new PokemonNotFoundWithParamsException(pokeName)))
+            .blockOptional();
+    }
+
 }

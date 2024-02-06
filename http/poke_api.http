@@ -5,3 +5,7 @@
 
 ###
 GET {{url}}/poke-api/web-client?pokeName=Dragonite HTTP/1.1
+
+
+###
+GET {{url}}/poke-api/web-client/tiny?pokeName=Dratini HTTP/1.1
