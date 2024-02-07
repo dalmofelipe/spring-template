@@ -1,5 +1,6 @@
 package com.dalmofelipe.springtemplate.records;
 
+import java.io.Serializable;
 import java.util.List;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -17,7 +18,8 @@ public record PokemonTinyRecord(
     List<JsonNode> stats,
     List<JsonNode> types
 
-) {
+) implements Serializable {
+
     public List<Object> getMoves() {
         return this.moves().stream()
             .map(m -> m.move().get("name")).toList();

@@ -16,6 +16,7 @@
     - [x] WebClient - PokeApiWebClientService
     - [ ] FeingClient
 - [ ] Endpoints para upload de arquivos
+- [ ] Cache Nativo e Redis
 - [ ] Testes Unidade e Integração
     - [x] Teste JUnit
     - [ ] Teste Mockito

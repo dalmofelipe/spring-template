@@ -2,6 +2,7 @@ package com.dalmofelipe.springtemplate.services;
 
 import java.util.Optional;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.ExchangeFilterFunction;
@@ -54,6 +55,7 @@ public class PokeApiWebClientService {
             .build();
     }
     
+    @Cacheable("pokemons")
     public Optional<PokemonRecord> searchPokemonByName(String name) {
         return this.newClient(pokemonUrl)
             .get()
@@ -66,6 +68,7 @@ public class PokeApiWebClientService {
             .blockOptional();
     }
 
+    @Cacheable("pokemons-tiny")
     public Optional<PokemonTinyRecord> searchPokemonByNameTiny(String pokeName) {
         return this.newClient(pokemonUrl)
             .get()

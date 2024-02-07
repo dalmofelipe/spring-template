@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Contact;
@@ -25,6 +26,7 @@ import io.swagger.v3.oas.annotations.info.License;
 			email = "${application.author.email}")
 	)
 )
+@EnableCaching
 @EnableAutoConfiguration
 @SpringBootApplication()
 public class SpringTemplateApplication {

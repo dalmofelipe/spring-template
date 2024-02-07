@@ -32,12 +32,10 @@ dependencies {
 	implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.29'
 	implementation group: 'org.flywaydb', name: 'flyway-mysql', version: '9.1.6'
 	implementation 'com.google.code.gson:gson:2.10.1'
-	
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	
-	// https://mvnrepository.com/artifact/org.apache.commons/commons-text
+	implementation 'org.springframework.boot:spring-boot-starter-cache'
 	implementation group: 'org.apache.commons', name: 'commons-text', version: '1.11.0'
 
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
