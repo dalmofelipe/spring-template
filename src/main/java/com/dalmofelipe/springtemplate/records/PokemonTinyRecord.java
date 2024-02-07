@@ -6,6 +6,8 @@ import java.util.List;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+/* Cache com Redis não serializou objetos processados PokemonTinyRecord */
+
 public record PokemonTinyRecord(
 
     Integer id,
@@ -18,7 +20,7 @@ public record PokemonTinyRecord(
     List<JsonNode> stats,
     List<JsonNode> types
 
-) implements Serializable {
+) {
 
     public List<Object> getMoves() {
         return this.moves().stream()
@@ -44,4 +46,5 @@ public record PokemonTinyRecord(
             .map(statJson -> statJson.get("type").get("name").toString().replace("\"", ""))
             .toList();
     }
+
 }
