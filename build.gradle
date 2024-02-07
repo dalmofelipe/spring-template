@@ -32,7 +32,7 @@ dependencies {
 	implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.29'
 	implementation group: 'org.flywaydb', name: 'flyway-mysql', version: '9.1.6'
 	implementation 'com.google.code.gson:gson:2.10.1'
-	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+	// implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 	implementation 'org.springframework.boot:spring-boot-starter-cache'
 	implementation group: 'org.apache.commons', name: 'commons-text', version: '1.11.0'
 

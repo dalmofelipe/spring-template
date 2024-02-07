@@ -20,7 +20,7 @@ public record PokemonTinyRecord(
     List<JsonNode> stats,
     List<JsonNode> types
 
-) {
+) implements Serializable {
 
     public List<Object> getMoves() {
         return this.moves().stream()
